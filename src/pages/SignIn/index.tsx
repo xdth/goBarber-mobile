@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, View, KeyboardAvoidingView, Platform } from 'react-native';
+import { Image, View, ScrollView, KeyboardAvoidingView, Platform } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 
 import Input from '../../components/Input';
@@ -17,25 +17,30 @@ const SignIn: React.FC = () => {
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         enabled
       >
-        <Container>
-          <Image source={logoImg} />
+        <ScrollView
+          keyboardShouldPersistTaps="handled"
+          contentContainerStyle={{ flex: 1 }}
+        >
+          <Container>
+            <Image source={logoImg} />
 
-          <View><Title>Faça seu logon</Title></View>
+            <View><Title>Faça seu logon</Title></View>
 
-          <Input name="email" icon="mail" placeholder="E-mail" />
-          <Input name="password" icon="lock" placeholder="Senha" />
+            <Input name="email" icon="mail" placeholder="E-mail" />
+            <Input name="password" icon="lock" placeholder="Senha" />
 
-          <Button onPress={() => {
-            console.log('foi');
-          }} >
-            Entrar
-          </Button>
+            <Button onPress={() => {
+              console.log('foi');
+            }} >
+              Entrar
+            </Button>
 
 
-          <ForgotPassword onPress={() => {}}>
-            <ForgotPasswordText>Esqueci minha senha</ForgotPasswordText>
-          </ForgotPassword>
-        </Container>
+            <ForgotPassword onPress={() => {}}>
+              <ForgotPasswordText>Esqueci minha senha</ForgotPasswordText>
+            </ForgotPassword>
+          </Container>
+        </ScrollView>
       </KeyboardAvoidingView>
 
       <CreateAccountButton onPress={() => {}}>
